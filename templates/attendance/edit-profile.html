@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>AMS | Edit Profile</title>
+  <!-- Custom CSS Files -->
+  <link rel="stylesheet" href="path/to/edit-profile.css" />
+  <link rel="stylesheet" href="path/to/nav.css" />
+</head>
+
+<body>
+  <!-- Include the navigation bar -->
+
+  <div class="main-body">
+    <section class="container">
+      <header>Edit Profile Details</header>
+      <form class="form" method="POST">
+        <!-- CSRF Token for security -->
+
+        <!-- Displaying First Name (disabled) -->
+        <div class="input-box">
+          <label>First Name</label>
+          <input type="text" value="John" required disabled />
+        </div>
+
+        <!-- Displaying Last Name (disabled) -->
+        <div class="input-box">
+          <label>Last Name</label>
+          <input type="text" value="Doe" required disabled />
+        </div>
+
+        <!-- Column containing Email and Birth Date -->
+        <div class="column">
+          <div class="input-box">
+            <label>Email Address</label>
+            <input type="email" value="john.doe@example.com" name="email" required />
+          </div>
+          <div class="input-box">
+            <label>Birth Date</label>
+            <input type="text" value="1990-01-01" name="DOB" required disabled />
+          </div>
+        </div>
+
+        <!-- Column containing Primary and Secondary Phone Numbers -->
+        <div class="column">
+          <div class="input-box">
+            <label>Phone Number (Primary)</label>
+            <input type="tel" value="1234567890" name="primary_number" required maxlength="10" minlength="10" />
+          </div>
+          <div class="input-box">
+            <label>Phone Number (Secondary)</label>
+            <input type="tel" value="0987654321" name="secondary_number" required maxlength="10" minlength="10" />
+          </div>
+        </div>
+
+        <!-- Displaying Gender (disabled) -->
+        <div class="input-box">
+          <label for="gender">Gender</label>
+          <br>
+          <select id="gender" name="gender" disabled>
+            
+            <!-- Logic to select the correct gender -->
+
+            <option value="Male" selected>Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+
+        <!-- Address input field -->
+        <div class="input-box address">
+          <label>Address</label>
+          <input type="text" value="1234 Main St, Anytown, USA" name="address" required />
+        </div>
+
+        <!-- Submit button -->
+        <button class="button2" type="submit">Submit</button>
+      </form>
+    </section>
+  </div>
+</body>
+
+</html>

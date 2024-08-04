@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Load static files -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+    <!-- Custom CSS files -->
+    <link rel="stylesheet" href="path/to/static/profile_style.css">
+    <link rel="stylesheet" href="path/to/static/profile_responsive.css">
+    <link rel="stylesheet" href="path/to/static/nav.css">
+
+    <!-- Remix Font Icons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Include navigation bar -->
+
+    <div class="body">
+        <!-- Body Main-Background -->
+        <span class="main_bg"></span>
+
+        <!-- Main-Container -->
+        <div class="container">
+            <!-- Header/Navbar -->
+            <header>
+                <div class="brandLogo">
+                    <figure><img src="path/to/static/images/deerwalklogo.png" alt="logo" width="40px" height="40px">
+                    </figure>
+                    <span> Deerwalk Institute Of Technology</span>
+                </div>
+            </header>
+            <!-- User Main-Profile -->
+            <section class="userProfile card">
+                <div class="profile">
+                    <figure>
+                        <!-- If no profile image, show default image -->
+
+                        <img src="path/to/static/images/deerwalklogo.png" alt="birat" width="250px" height="250px">
+                        <!-- {% else %} -->
+                        <img src="path/to/profile_image_url" alt="profile" width="250px" height="250px">
+                        <!-- Replace with profile image URL -->
+
+                        <!-- Endif -->
+                    </figure>
+                    <div class="media-file">
+                        <form method="POST" enctype="multipart/form-data">
+                            <!-- CSRF token for form security -->
+
+                            <!-- Render form fields as paragraph -->
+
+                            <button class="remove">
+                                <a href="path/to/image-delete-url">Remove</a>
+                                <!-- Replace with URL for image deletion -->
+                            </button>
+                            <button class="upload" type="submit">Upload</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <!-- Work & Skills Section -->
+            <section class="work_skills card">
+                <!-- Work Container -->
+                <div class="work">
+                    <h1 class="heading">Work</h1>
+                    <div class="primary">
+                        <h1>Deerwalk Institute of Technology</h1>
+                        <p>Sifal <br> Kathmandu, Nepal</p>
+                    </div>
+                    <br><br>
+                    <!-- Skills Container -->
+                    <div class="skills">
+                        <h1 class="heading">Skills</h1>
+                        <ul>
+                            <li style="--i:0">Android</li>
+                            <li style="--i:1">Web-Design</li>
+                            <li style="--i:2">UI/UX</li>
+                            <li style="--i:3">Video Editing</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- User Details Sections -->
+            <section class="userDetails card">
+                <div class="userName">
+                    <h1 class="name">First Last Name</h1> <!-- Replace with user's first and last name -->
+                    <div class="map">
+                        <i class="ri-map-pin-fill ri"></i>
+                        <span>Address</span> <!-- Replace with user's address -->
+                    </div>
+                    <h2>Courses Taught</h2>
+                    <!-- Loop through courses taught by the user -->
+
+                    <p>Course Title</p> <!-- Replace with course title -->
+                    <!-- End for -->
+                </div>
+                <br>
+            </section>
+
+            <!-- Timeline & About Sections -->
+            <section class="timeline_about card">
+                <div class="tabs">
+                    <ul>
+                        <li class="about active">
+                            <i class="ri-user-3-fill ri"></i>
+                            <span>About</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="contact_info">
+                    <h1 class="heading">Contact Information</h1>
+                    <ul>
+                        <li class="phone">
+                            <h1 class="label">Phone:</h1>
+                            <span class="info">
+                                Primary Number (Primary) <br> Secondary Number (Secondary)
+                                <!-- Replace with user's phone numbers -->
+                            </span>
+                        </li>
+
+                        <li class="address">
+                            <h1 class="label">Address:</h1>
+                            <span class="info">Address</span> <!-- Replace with user's address -->
+                        </li>
+
+                        <li class="email">
+                            <h1 class="label">E-mail:</h1>
+                            <span class="info">Email</span> <!-- Replace with user's email -->
+                        </li>
+
+                        <li class="site">
+                            <h1 class="label">Social Media:</h1>
+                            <!-- Replace with user's social media links -->
+                            <a href="#"><i class="ri-facebook-circle-line"></i> &nbsp; </a>
+                            <a href="#"><i class="ri-twitter-line"></i> &nbsp; </a>
+                            <a href="#"><i class="ri-github-fill"></i> &nbsp; </a>
+                            <a href="#"><i class="ri-linkedin-box-fill"></i> &nbsp; </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="basic_info">
+                    <h1 class="heading">Basic Information</h1>
+                    <ul>
+                        <li class="birthday">
+                            <h1 class="label">Date Of Birth:</h1>
+                            <span class="info">DOB</span> <!-- Replace with user's date of birth -->
+                        </li>
+
+                        <li class="sex">
+                            <h1 class="label">Gender:</h1>
+                            <span class="info">Gender</span> <!-- Replace with user's gender -->
+                        </li>
+                    </ul>
+                </div>
+                <div class="edit-profile">
+                    <a href="path/to/edit-profile-url">
+                        <button class="button2"><i class="ri-pencil-fill"></i>Edit Profile</button>
+                        <!-- Replace with URL for editing profile -->
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

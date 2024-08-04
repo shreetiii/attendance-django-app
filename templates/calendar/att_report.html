@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+{% load custom_filters %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'att_report.css' %}">
+{% endblock link %}
+{% block body %}
+<!-- Yaha Table Banayera SP Course ko Attendance Report Render Garni -->
+<div class="main">
+    <h1 class="h1">Machine Learning Attendance
+    <span class="h1-span">{{month}} {{today_date.day}} {{today_date.year}}</span></h1>
+    <div class="stu-table">
+        <table>
+            <thead>
+                <tr>
+                    <th class="name-col-1">Student Name</th>
+                    {% for date in att_report %}
+                        <th>{{ date.day }}</th>
+                    {% endfor %}
+                    <th class="missed-col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <form method="POST">
+                    {% csrf_token %} 
+                {% for student in student_list %}
+                    <tr>
+                        <td class="name-col">{{ student.student.name }}</td>
+                        {% for date in att_report %}
+                            {% with date_id=date|date:"Y-m-d" %}
+                            <td class="status-col">
+                                {% with student_id_date=student.student.id|stringformat:"s"|add:"_"|add:date_id %}
+                                    {% if student_status|get_attendance_status:student_id_date %}
+                                     {{  student_status|get_attendance_status:student_id_date }}
+                                    {% endif %}
+                                    {% endwith %}
+                                {% endwith %}
+                            </td>
+                        {% endfor %}
+                        
+                    </tr>
+                {% endfor %}
+               
+                </form>
+            </tbody>
+        </table>
+        </div>
+        </div>
+{% endblock body %}

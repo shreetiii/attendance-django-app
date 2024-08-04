@@ -1,0 +1,592 @@
+/* ===== =====  Poppins Google Font  ===== =====  */
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+
+/* ===== =====>>  Universal Selector  <<===== =====  */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== =====>>  Body Font Size  <<===== =====  */
+html {
+  font-size: 11px;
+}
+
+/* ===== =====>> Css Variables  <<===== =====  */
+:root {
+  /* =====>>  Font Color  <<===== */
+  --f1-color: #fff;
+  --f2-color: #000;
+  --f3-color: rgba(0, 0, 0, 0.8);
+  --f4-color: rgba(0, 0, 0, 0.6);
+  --f5-color: #0099cc;
+  --f6-color: #88cee6;
+
+  /* =====>>  Background Color  <<===== */
+  --bg1-color: #fff;
+  --bg2-color: #000;
+  --bg3-color: #33ccff;
+  --bg4-color: #33cc33;
+  --bg5-color: #0099cc;
+  --bg6-color: rgba(0, 0, 0, 0.4);
+  --bg7-color: rgba(0, 0, 0, 0.2);
+  --glass-bg: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.3)
+  );
+  --C-lg-bg: linear-gradient(45deg, #ff3399, #ff9933);
+
+  /* ===== =====>>  Font Size  <<===== =====  */
+  --xxxl-fs: 2.2rem;
+  --xxl-fs: 1.8rem;
+  --xl-fs: 1.6rem;
+  --l-fs: 1.4rem;
+  --m-fs: 1.2rem;
+  --s-fs: 1.1rem;
+  --xs-fs: 1rem;
+
+  /* =====>>  Margin  <<===== */
+  --m-2-5: 2.5rem;
+  --m-1-8: 1.8rem;
+  --m-1-5: 1.5rem;
+  --m-0-6: 0.6rem;
+  --m-0-5: 0.5rem;
+  --m-0-3: 0.3rem;
+
+  /* =====>>  Padding  <<===== */
+  --p-2-5: 2.5rem;
+  --p-1-5: 1.5rem;
+  --p-1-0: 1rem;
+  --p-0-8: 0.8rem;
+  --p-0-5: 0.5rem;
+  --p-0-4: 0.4rem;
+  --p-0-3: 0.3rem;
+}
+
+/* ===== =====>>  Body Css  <<===== =====  */
+.body {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* ===== =====>>  Body Main-Background Css  <<===== =====  */
+.main_bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* height: 100%; */
+  /* background: url(images/bg.png); */
+  /* background-position: left; */
+  /* z-index: -1; */
+  /* filter: blur(10px); */
+}
+
+/* ===== =====>>  Main-Container Css  <<===== =====  */
+.container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas:
+    "header header"
+    "userProfile userDetails"
+    "work_skills timeline_about"
+    "work_skills timeline_about";
+  width: 80%;
+  height: 100vh;
+  border-radius: 20px;
+  background: var(--glass-bg);
+  padding: var(--p-1-5);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== =====>>  Container Cards Grid-Area Css Start  <<===== =====  */
+header {
+  grid-area: header;
+}
+
+.userProfile {
+  grid-area: userProfile;
+}
+
+.work_skills {
+  grid-area: work_skills;
+}
+
+.userDetails {
+  grid-area: userDetails;
+}
+
+.timeline_about {
+  grid-area: timeline_about;
+}
+
+/* ===== =====>>  Container Cards Css  <<===== =====  */
+.container .card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(3rem);
+  border-radius: 2.5rem;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.05);
+  margin: 10px;
+  padding: var(--p-1-5);
+}
+
+/* ===== =====>>  Container Header/Navbar Css  <<===== =====  */
+.container header {
+  padding: 0 var(--p-2-5);
+}
+
+.container header .brandLogo {
+  display: flex;
+  align-items: center;
+}
+
+.container header .brandLogo figure img {
+  width: 5rem;
+  height: 5rem;
+}
+
+.container header .brandLogo span {
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: var(--m-0-5);
+}
+
+/* ===== =====>>  User Main-Profile Css Start  <<===== ===== */
+
+.container .userProfile {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  background: none;
+  backdrop-filter: none;
+  box-shadow: none;
+
+}
+
+.container .userProfile .profile figure img {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  margin-left: 60px;
+}
+.container .userProfile .profile .media-file {
+  margin: 15px;
+  padding: 10px;
+}
+.container .userProfile .profile .media-file label {
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 20px;
+  background-color: #e8e8e8;
+  /* background: linear-gradient(135deg, #71b7e6, #9b59b6); */
+  border-radius: 5px;
+  text-align: center;
+  margin-left: 90px;
+
+}
+
+.container .userProfile .profile .media-file input {
+  display: none;
+}
+.container .userProfile .profile  .remove {
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 20px;
+  background: #e8e8e8;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  margin-left: 20px;
+}
+
+.container .userProfile .profile  .remove a{
+  text-decoration: none;
+  color: #000;
+}
+
+.container .userProfile .profile .media-file .upload {
+  margin-top: 9px;
+  margin-left: 80px;
+  padding: 1px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  background: #e8e8e8;
+  border-radius: 5px;
+  
+}
+/* ===== =====>>  Work & Skills Css Start  <<===== ===== */
+.container .work_skills {
+  padding: var(--p-1-5);
+}
+
+.work_skills .work .heading,
+.work_skills .skills .heading {
+  position: relative;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+  margin-bottom: var(--m-1-5);
+}
+
+.work_skills .work .heading::before,
+.work_skills .skills .heading::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 0.1rem;
+  width: 88%;
+  background: var(--bg6-color);
+}
+ 
+
+.work_skills .work .primary h1,
+.work_skills .work .primary p {
+  font-size: 20px;
+  color: var(--f3-color);
+  margin-bottom: var(--m-0-6);
+}
+
+.work_skills .work .primary p,
+.work_skills .work .secondary p {
+  margin-bottom: var(--m-1-8);
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.6rem;
+  font-size: 18px;
+}
+
+/* =====>>  Skills Bars Css  <<===== */
+.work_skills .skills ul li {
+  position: relative;
+  /* font-size: var(--m-fs); */
+  line-height: 1.8rem;
+  margin: var(--m-0-5);
+  color: var(--f2-color);
+  font-weight: 500;
+}
+
+.work_skills .skills ul li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  height: 0.2rem;
+  background: var(--bg3-color);
+  animation: skills 8s linear infinite;
+  animation-delay: calc(-2s * var(--i));
+}
+
+@keyframes skills {
+  0% {
+    width: 50%;
+    filter: hue-rotate(180deg);
+  }
+
+  50% {
+    width: 0;
+  }
+
+  100% {
+    width: 50%;
+    filter: hue-rotate(0);
+  }
+}
+
+/* ===== =====>>  User Details Css Start  <<===== ===== */
+.userDetails{
+  margin: 20px;
+  position: relative;
+  padding: var(--p-1-5) var(--p-2-5);
+}
+
+.userDetails .userName h1 {
+  font-size: 25px;
+}
+
+.userDetails .userName .map {
+  position: absolute;
+  top: 2.5rem;
+  left: 25rem;
+  display: flex;
+}
+
+.userDetails .userName .map .ri {
+  margin-right: var(--m-0-3);
+  font-size: 20px;
+}
+
+.userDetails .userName .map span {
+  font-size: 20px;
+  color: var(--f3-color);
+  font-weight: 700;
+}
+
+.userDetails .userName p {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--f5-color);
+  /* margin-bottom: var(--m-1-8); */
+  margin-top: 20px;
+
+}
+
+.userDetails .userName h2 {
+  font-size: 20px;
+  font-weight: 700;
+  /* margin-bottom: var(--m-1-8); */
+  margin-top: 20px;
+
+}
+
+.userDetails .rank {
+  position: relative;
+  margin-bottom: var(--m-1-8);
+  margin-top: 50px;
+
+}
+
+.userDetails .rank .heading {
+  font-size: var(--xs-fs);
+  color: var(--f4-color);
+  text-transform: uppercase;
+  margin-bottom: var(--m-0-6);
+}
+
+.userDetails .rank span {
+  font-size: var(--xxl-fs);
+  font-weight: 700;
+}
+
+.userDetails .rank .rating {
+  position: absolute;
+  top: 2.7rem;
+  left: 3.5rem;
+}
+
+.userDetails .rank .rating .rate {
+  color: var(--f5-color);
+  font-size: var(--l-fs);
+}
+
+.userDetails .rank .rating .underrate {
+  color: var(--f6-color);
+}
+
+.userDetails .btns ul,
+.userDetails .btns ul li {
+  display: flex;
+  align-items: center;
+}
+
+.userDetails .btns ul li {
+  margin-right: var(--m-2-5);
+  border-radius: 0.5rem;
+}
+
+.userDetails .btns ul li .ri {
+  margin-right: var(--m-0-5);
+  font-size: var(--xl-fs);
+}
+
+.userDetails .btns ul li a {
+  font-size: var(--l-fs);
+  color: var(--f2-color);
+  font-weight: 500;
+}
+
+.userDetails .btns ul .active {
+  background: #e6f2ff;
+  padding: var(--p-0-5) var(--p-1-5);
+}
+
+.userDetails .btns ul .active a,
+.userDetails .btns ul .active .ri {
+  color: var(--f5-color);
+}
+
+/* ===== =====>>  Timeline & About Css Start  <<===== ===== */
+.timeline_about {
+  padding: var(--p-2-5);
+}
+
+.timeline_about .tabs ul {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--m-2-5);
+}
+
+
+.timeline_about .tabs ul li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: var(--m-2-5);
+  padding-bottom: var(--p-0-8);
+}
+
+.timeline_about .tabs ul li span {
+  font-size: var(--l-fs);
+  font-weight: 500;
+}
+
+.timeline_about .tabs ul li .ri {
+  margin-right: var(--m-0-5);
+}
+
+.timeline_about .tabs ul .active::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--bg5-color);
+}
+
+.timeline_about .contact_info .heading,
+.timeline_about .basic_info .heading 
+{
+  color: var(--f4-color);
+  text-transform: uppercase;
+  margin-bottom: var(--m-1-5);
+  font-size: 20px;
+}
+
+.timeline_about .contact_info ul,
+.timeline_about .basic_info ul {
+  margin-bottom: var(--m-1-5);
+}
+
+.timeline_about .contact_info ul li,
+.timeline_about .basic_info ul li {
+  display: flex;
+  margin: var(--m-0-5) 0;
+}
+
+.timeline_about .contact_info ul li h1,
+.timeline_about .basic_info ul li h1 
+{
+  font-weight: 500;
+  min-width: 12rem;
+}
+
+.timeline_about .contact_info ul li span,
+.timeline_about .basic_info ul li span {
+  /* font-size: var(--m-fs); */
+  font-size: 15px;
+
+}
+
+.timeline_about .contact_info ul .phone span,
+.timeline_about .contact_info ul .email span,
+.timeline_about .contact_info ul .site span,
+.timeline_about .contact_info ul .address span
+ {
+  /* color: var(--f5-color); */
+  font-size: 15px;
+
+}
+
+.edit-profile {
+  margin-top: 30px;
+  margin-left: 450px;
+}
+
+.button2 {
+  display: inline-block;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  justify-content: center;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  box-shadow: 6px 6px 12px #c5c5c5,
+             -6px -6px 12px #ffffff;
+
+}
+ .edit-profile .ri-pencil-fill{
+  padding: 10px;
+} 
+
+.button2:active {
+  color: #666;
+  box-shadow: inset 4px 4px 12px #c5c5c5,
+             inset -4px -4px 12px #ffffff;
+}
+
+.button2:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button2:after {
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: #009087;
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button2:hover {
+  color: #ffffff;
+  border: 1px solid #009087;
+}
+
+.button2:hover:before {
+  top: -35%;
+  background-color: #009087;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.button2:hover:after {
+  top: -45%;
+  background-color: #009087;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.button2 a {
+font-size: 18px;
+font-family: 'Times New Roman', Times, serif;
+color: #000;
+}
+

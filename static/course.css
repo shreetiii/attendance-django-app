@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* font-family: "Poppins", sans-serif; */
+}
+
+html {
+  font-size: 12px;
+} 
+
+.center {
+  font-family: "Roboto", sans-serif;
+  position: relative;
+  display: inline-block;
+  margin-top: 30px;
+  left: 25%;
+} 
+
+.center .h1{
+ text-align: center;
+} 
+
+.center .course_anchor{
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.blog_post {
+  width: 800px;
+  height: 360px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  line-height: 25px;
+  /* background: linear-gradient(90deg, #fff, #fff); */
+  background-color: #f0f0f0;
+  margin: 25px;
+}
+
+.blog_post:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.container_copy {
+  padding: 4.5rem 4rem 5rem 4rem;
+}
+
+h3 {
+  margin: 0 0 0.5rem 0;
+  color: #999;
+  font-size: 1.25rem;
+}
+
+h1 {
+  margin: 0 0 1rem 0;
+  font-size: 2.5rem;
+  letter-spacing: 0.5px;
+  color: #333;
+}
+
+p {
+  margin: 0 0 4.5rem 0;
+  font-size: 1.5rem;
+  line-height: 1.45;
+  color: #333;
+}
+
+.button2 {
+  margin-top: -25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button2 .calendar {
+  letter-spacing: 0.9px;
+  border: none;
+  width: 170px;
+  height: 55px;
+  padding: 1.5rem 2rem;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  box-shadow: 1px 10px 2rem rgba(255, 94, 98, 0.5);
+  background-color:   #0077B5;
+  color: #fff;
+} 
+
+.button2 .cal-report {
+  letter-spacing: 0.9px;
+  border: none;
+  /* margin-right: 50px; */
+  width: 140px;
+  height: 55px;
+  padding: 1.5rem 2rem;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  box-shadow: 1px 10px 2rem rgba(255, 94, 98, 0.5);
+  background-color: #0077B5;
+  color: #fff;
+
+
+} 
+
+@media only screen and (max-width: 650px) {
+  body {
+    background-color: black;
+  }
+}
