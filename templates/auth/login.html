@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- Link to a static CSS file (update with actual static path) -->
-    <link rel="stylesheet" href="../../static/login.css">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -26,15 +27,18 @@
             </div>
 
             <form method="POST">
+                {% csrf_token %}
                 <!-- Add CSRF token here -->
 
                 <div class="input-field">
                     <!-- Add form field for username here -->
+                     <input type="text" name="username" id="username" class="input" placeholder="Enter Username">
                     <i class='bx bx-user'></i>
                 </div>
 
                 <div class="input-field">
                     <!-- Add form field for password here -->
+                     <input type="password" name="password" id="password" class="input" placeholder="Enter Password">
                     <i class='bx bx-lock-alt'></i>
                     <!-- Add logic for displaying password errors here -->
                 </div>
@@ -58,11 +62,11 @@
 
     <ul class="circles">
         <!-- Link to static images for the logo (update with actual static paths) -->
-        <li><img class="logos" src="../../static/images/deerwalklogo.png" alt=""></li>
-        <li><img class="logos" src="../../static/images/deerwalklogo.png" alt=""></li>
-        <li><img class="logos" src="../../static/images/deerwalklogo.png" alt=""></li>
-        <li><img class="logos" src="../../static/images/deerwalklogo.png" alt=""></li>
-        <li><img class="logos" src="../../static/images/deerwalklogo.png" alt=""></li>
+        <li><img class="logos" src="{% static 'images/deerwalklogo.png' %}" alt=""></li>
+        <li><img class="logos" src="{% static 'images/deerwalklogo.png' %}" alt=""></li>
+        <li><img class="logos" src="{% static 'images/deerwalklogo.png' %}" alt=""></li>
+        <li><img class="logos" src="{% static 'images/deerwalklogo.png' %}" alt=""></li>
+        <li><img class="logos" src="{% static 'images/deerwalklogo.png' %}" alt=""></li>
     </ul>
 </body>
 
