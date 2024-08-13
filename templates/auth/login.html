@@ -20,6 +20,22 @@
     <!-- Display messages if there are any (messages to be dynamically filled) -->
     <!-- Add logic for displaying messages here -->
 
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert">
+        <h1>{{ message }}</h1>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if form.non_field_errors %}
+    <div class="error">
+        {% for error in form.non_field_errors %}
+        <p>{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
     <div class="box">
         <div class="container">
             <div class="top">
@@ -32,15 +48,18 @@
 
                 <div class="input-field">
                     <!-- Add form field for username here -->
-                     <input type="text" name="username" id="username" class="input" placeholder="Enter Username">
+                    {{ form.username }}
                     <i class='bx bx-user'></i>
+                    {{ form.username.errors }}
                 </div>
 
                 <div class="input-field">
                     <!-- Add form field for password here -->
-                     <input type="password" name="password" id="password" class="input" placeholder="Enter Password">
+                    {{ form.password }}
                     <i class='bx bx-lock-alt'></i>
                     <!-- Add logic for displaying password errors here -->
+                     {{ form.password.errors }}
+
                 </div>
 
                 <div class="input-field">
