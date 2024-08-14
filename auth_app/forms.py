@@ -51,7 +51,7 @@ class UserRegistrationForm(forms.Form):
         if not re.search('[A-Z]',pwd1):
             raise forms.ValidationError('Password must contain at least 1 uppercase letter')
         if not re.search('[a-z]',pwd1):
-            raise forms.ValidationError('Password must contain at least 1 uppercase letter')
+            raise forms.ValidationError('Password must contain at least 1 lowercase letter')
         if not re.search('[0-9]',pwd1):
             raise forms.ValidationError('Password must contain at least 1 digit')
         if not re.search('[\W*]',pwd1):
