@@ -172,3 +172,180 @@ form .button input:hover {
         flex-direction: column;
     }
 }
+
+.errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 5px;
+}
+
+.errorlist li {
+    font-size: 14px;
+    color: #d9534f;
+    margin-top: 5px;
+    padding: 8px 12px;
+    background-color: rgba(217, 83, 79, 0.1);
+    border: 1px solid rgba(217, 83, 79, 0.4);
+    border-radius: 5px;
+    position: relative;
+    animation: slideIn 0.4s ease-in-out, fadeIn 0.8s ease-in-out;
+}
+
+/* Animation for Error Messages */
+@keyframes slideIn {
+    0% {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Icon before error message */
+.errorlist li::before {
+    content: '⚠️';
+    margin-right: 8px;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.toast {
+    position: absolute;
+    top: 25px;
+    border-radius: 12px;
+    background: #fff;
+    padding: 20px 35px 20px 25px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-left: 6px solid #4070f4;
+    overflow: hidden;
+    transform: translateX(calc(100% + 30px));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+}
+
+.toast.active {
+    transform: translateX(0%);
+}
+
+.toast .toast-content {
+    display: flex;
+    align-items: center;
+}
+
+.toast {
+    transition: opacity 0.5s, height 0.5s, margin 0.5s, padding 0.5s;
+}
+
+.toast-content .check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    background-color: #4070f4;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+.toast-content .message {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+.message .text {
+    font-size: 20px;
+    font-weight: 400;
+    ;
+    color: #666666;
+}
+
+.message .text.text-1 {
+    font-weight: 600;
+    color: #333;
+}
+
+.toast .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.toast .close:hover {
+    opacity: 1;
+}
+
+.toast .progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: #ddd;
+}
+
+.toast .progress:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #4070f4;
+}
+
+.progress.active:before {
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    100% {
+        right: 100%;
+    }
+}
+
+.input-box select.custom-class {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+.input-box select.custom-class:focus,
+.input-box select.custom-class:valid {
+    border-color: #9b59b6;
+}
+.input-box .custom-file-upload {
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+}
+.img {
+    margin-top: 20px;
+}

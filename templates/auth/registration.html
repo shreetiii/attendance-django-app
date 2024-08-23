@@ -8,8 +8,8 @@
 
 {% block body %}
 
-{% for message in messages %}
-<h1>{{message}}</h1>
+{% for errors in form.non_field_errors %}
+<h1>{{errors}}</h1>
 {% endfor %}
 
   <div class="body">
@@ -53,6 +53,7 @@
                 <span class="details">Confirm Password</span>
                 <!-- <input type="password" placeholder="Confirm your password" required name="pswd2"> -->
                 {{ form.password2 }}
+                {{form.password2.errors}}
               </div>
             </div>
             <div class="button">
@@ -61,9 +62,26 @@
           </form>
         </div>
       </div>
-
-<script>
   
+      <!-- Toast Message  -->
+      {% if messages %}
+
+      {% for message in messages %}
+      <div class="toast" id="toast{{ forloop.counter }}">
+        <div class="toast-content">
+          <i class="fas fa-solid fa-check check"></i>
+          <div class="message">
+            <!-- <span class="text text-1">Success!</span> -->
+            <span class="text text-2">{{message}}</span>
+          </div>
+        </div>
+        <!-- <i class="fa-solid fa-xmark close"></i> -->
+        <i class="fas fa-times close" id="close{{ forloop.counter }}"></i>
+        <div class="progress"></div>
+      </div>
+      {%endfor%}
+      
+<script>
 {% for message in messages %}
     var toast{{ forloop.counter }} = document.getElementById('toast{{ forloop.counter }}');
     var close{{ forloop.counter }} = document.getElementById('close{{ forloop.counter }}');
@@ -87,6 +105,9 @@ function removeToast(el) {
     }, 500); // delay should match the transition duration
 }
 </script>
+
+{% endif %}
+
 
 </div>
 
