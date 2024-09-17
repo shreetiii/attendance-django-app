@@ -1,6 +1,7 @@
 from django import forms
 import re  
 from django.contrib.auth.models import User
+from .models import Student, Teacher
 
 
 class LoginForm(forms.Form):
@@ -90,3 +91,33 @@ class TeacherForm(forms.Form):
             raise forms.ValidationError('Image should be in jpg or png format')
         
         return img
+    
+
+class StudentForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = [
+            'name',
+            'address',
+            'age',
+            'phone_number'
+        ]
+    
+        widgets = {
+            'name' : forms.TextInput(attrs={'placeholder' : 'Enter Name','class' : 'input-box'}),
+            'address' : forms.TextInput(attrs={'placeholder' : 'Enter Address','class' : 'input-box'}),
+            'age' : forms.NumberInput(attrs={'placeholder' : 'Enter Age','class' : 'input-box'}),
+            'phone_number' : forms.TextInput(attrs={'placeholder' : 'Enter Phone Number','class' : 'input-box'})
+        }
+
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+        if not name.isalpha():
+            raise forms.ValidationError('First Name should contain only alphabets')
+        return name
+    
+    def clean_address(self):
+        address = self.cleaned_data.get('address')
+        if not address.isalpha():
+            raise forms.ValidationError('Address should contain only alphabets')
+        return address

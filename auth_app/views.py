@@ -1,10 +1,11 @@
-from django.shortcuts import redirect, render
-from django.http import HttpResponse
+from django.db import IntegrityError
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
-from .forms import LoginForm, UserRegistrationForm, TeacherForm
+from .forms import LoginForm, UserRegistrationForm, TeacherForm, StudentForm
+from .models import Teacher, Student    
 
 # Create your views here.
 
@@ -93,21 +94,69 @@ def register_user(request):
 @login_required
 def teacher(request):
     user_list = User.objects.exclude(is_superuser=True)
-    print(user_list)
     form = TeacherForm()
-    print(form)
+
     if request.method == 'POST':
         print(request.POST)
         print(request.FILES)
         form = TeacherForm(request.POST, request.FILES)
+
         if form.is_valid():
             print("Cleaned Data")
             print("*************")
             print(form.cleaned_data)
-            print(form)
-            print(form.cleaned_data.get('my_image').content_type)
-        else: 
+            user = form.cleaned_data['teacher']
+            address = form.cleaned_data['address']
+            dob = form.cleaned_data['dob']
+            primary_number = form.cleaned_data['primary_number']
+            secondary_number = form.cleaned_data['secondary_number']
+            sex = form.cleaned_data['sex']
+            my_image = form.cleaned_data['my_image']
+            print(my_image)
+            if Teacher.objects.filter(user=user).exists():
+                print("User already exists")
+                form.add_error('teacher', f'User with {user.username} already exists')
+            else:
+                try:
+                    Teacher.objects.create(user=user,
+                                        address=address,
+                                        dob=dob,
+                                        primary_number=primary_number,
+                                        secondary_number=secondary_number,
+                                        sex=sex,
+                                        image=my_image)
+                    messages.success(request, 'Teacher Created Successfully')
+                except IntegrityError as ie:
+                    print(f"Integrity error caught: ... {ie}")    
+                except Exception as e:
+                    print(f"Error in Creating User: ... {e}")
+        else:   
             print("Form is Invalid")
-            print(request.FILES.get('my_image').content_type)
             print(form.errors)
+
     return render(request, 'auth/PersonRegistration.html', {'teachers': user_list, 'form': form})
+
+def teacher_image(request):
+    teacher = Teacher.objects.all()
+    for item in teacher:
+        print(item.image)
+    return render(request, 'auth/teacher_image.html', {'teachers': teacher})
+
+@login_required
+def add_student(request):
+    print(request.POST)
+    if request.method == 'POST':
+        form = StudentForm(request.POST)    
+        print("Post Request")
+        print(form)
+        if form.is_valid():
+            print(form.cleaned_data)
+            form.save()
+            messages.success(request, 'Student Added Successfully')
+        else:
+            print(form.errors)
+    else: 
+        form = StudentForm()
+        print("Get Request")
+        print(form)
+    return render(request, 'auth/addstudent.html', {'form': form})

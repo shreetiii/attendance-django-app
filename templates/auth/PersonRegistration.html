@@ -20,6 +20,7 @@
             <!-- <input type="text" placeholder="Enter your first name" required name="first_name"> -->
 
            {{ form.teacher }}
+           {{ form.teacher.errors }}
 
           </div>
           <div class="input-box">
@@ -64,30 +65,50 @@
         </div>
     </div>
 
-<script>
+<!-- Toast Message  -->
+{% if messages %}
+
 {% for message in messages %}
-    var toast{{ forloop.counter }} = document.getElementById('toast{{ forloop.counter }}');
-    var close{{ forloop.counter }} = document.getElementById('close{{ forloop.counter }}');
+<div class="toast" id="toast{{ forloop.counter }}">
+  <div class="toast-content">
+    <i class="fas fa-solid fa-check check"></i>
+    <div class="message">
+      <!-- <span class="text text-1">Success!</span> -->
+      <span class="text text-2">{{message}}</span>
+    </div>
+  </div>
+  <!-- <i class="fa-solid fa-xmark close"></i> -->
+  <i class="fas fa-times close" id="close{{ forloop.counter }}"></i>
+  <div class="progress"></div>
+</div>
+{%endfor%}
+
+<script>
+  {% for message in messages %}
+  var toast{{ forloop.counter }} = document.getElementById('toast{{ forloop.counter }}');
+  var close{{ forloop.counter }} = document.getElementById('close{{ forloop.counter }}');
     
-    close{{ forloop.counter }}.addEventListener('click', function() {
-        removeToast(toast{{ forloop.counter }});
+    close{{ forloop.counter }}.addEventListener('click', function () {
+    removeToast(toast{{ forloop.counter }});
     });
 
-    setTimeout(function() {
-        removeToast(toast{{ forloop.counter }});
+  setTimeout(function () {
+    removeToast(toast{{ forloop.counter }});
     }, 3000);
-{% endfor %}
+  {% endfor %}
 
-function removeToast(el) {
+  function removeToast(el) {
     el.style.opacity = '0';
     el.style.height = '0';
     el.style.margin = '0';
     el.style.padding = '0';
-    setTimeout(function() {
-        el.remove();
+    setTimeout(function () {
+      el.remove();
     }, 500); // delay should match the transition duration
-}
+  }
 </script>
+
+{% endif %}
 
 </div>
 
