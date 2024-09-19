@@ -58,3 +58,28 @@ class Student(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Course(models.Model):
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    duration = models.CharField(max_length=20)
+    shift = models.CharField(max_length=1, choices=shift_choice)
+    title = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        db_table = 'course'
+        ordering = ['title']
+
+
+class StudentClass(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.student.name
+
+    class Meta:
+        db_table = 'student_class'
+        
