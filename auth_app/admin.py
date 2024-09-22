@@ -1,11 +1,10 @@
 from django.contrib import admin
-from .models import Teacher, Student, Course    
-
-# Register your models here.
+from .models import Teacher, Student, Course
 
 @admin.register(Teacher)
 class TeacherAdmin(admin.ModelAdmin):
     list_display = ['user','address','primary_number','secondary_number','sex']
+
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
@@ -19,4 +18,3 @@ class CourseAdmin(admin.ModelAdmin):
         'shift',
         'title'
     ]
-

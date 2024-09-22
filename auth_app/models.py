@@ -20,8 +20,6 @@ status_choice = [
 def file_upload(self, filename):
     return f'{self.user.username}_{filename}'
 
-# Create your models here.
-
 class Teacher(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     address = models.CharField(max_length=30)
@@ -40,7 +38,7 @@ class Teacher(models.Model):
         verbose_name = 'Teacher'
         constraints = [
             models.UniqueConstraint(fields=['primary_number','secondary_number'], name='unique_primary_number')
-        ]
+        ] 
 
 class Student(models.Model):
     name = models.CharField(max_length=30)
@@ -72,7 +70,6 @@ class Course(models.Model):
         db_table = 'course'
         ordering = ['title']
 
-
 class StudentClass(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
@@ -82,4 +79,15 @@ class StudentClass(models.Model):
 
     class Meta:
         db_table = 'student_class'
-        
+
+class Attendance(models.Model):
+    today_date = models.DateField(null=False, blank=False)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    stats = models.CharField(max_length=1, choices=status_choice)
+
+    def __str__(self):
+        return self.student.name
+    
+    class Meta:
+        db_table = 'attendance'

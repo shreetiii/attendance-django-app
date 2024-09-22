@@ -1,41 +1,93 @@
 <!-- Extend the base template -->
 
+{% extends 'core/base.html' %}
+
 <!-- Load static files -->
 
 <!-- Block for additional CSS links -->
 
-<link rel="stylesheet" href="path/to/static/course.css">
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<link rel="stylesheet" href="{% static 'course.css' %}">
+
+{% endblock %}
+
 <!-- End Block -->
 
 <!-- Block for the title -->
-
-<title>Logged In</title>
+{% block title %}
+<title>Teacher Page</title>
+{% endblock %}
 <!-- End Block -->
 
 <!-- Block for the body content -->
 
+{% block body %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="toast" id="toast1">
+  <div class="toast-content">
+    <i class="fas fa-solid fa-check check"></i>
+    <div class="message">
+      <span class="text text-2">{{message}}</span>
+    </div>
+  </div>
+  <i class="fas fa-times close" id="close1"></i>
+  <div class="progress"></div>
+</div>
+{% endfor %}
+
+<script>
+  /* JavaScript for managing toast notifications */
+  var toast1 = document.getElementById('toast1');
+  var close1 = document.getElementById('close1');
+
+  close1.addEventListener('click', function () {
+    removeToast(toast1);
+  });
+
+  setTimeout(function () {
+    removeToast(toast1);
+  }, 3000);
+
+  function removeToast(el) {
+    el.style.opacity = '0';
+    el.style.height = '0';
+    el.style.margin = '0';
+    el.style.padding = '0';
+    setTimeout(function () {
+      el.remove();
+    }, 500); // delay should match the transition duration
+  }
+</script>
+{% endif %}
+
 <div class="center">
   <h1 class="h1">Courses Taught</h1>
 
+  {% for course in courses %}
   <!-- Loop through course details -->
   <div class="blog_post">
     <!-- Uncomment and update image source if needed -->
-  
+
     <div class="container_copy">
       <h3>Course Name </h3>
       <!-- Course title -->
-      <h1>Course Title</h1>
+      <h1>{{course.title}}</h1>
 
       <h3> Teacher </h3>
       <!-- Teacher's first and last name -->
-      <h1>Teacher Name</h1>
+      <h1>{{course.teacher.user.first_name}} {{course.teacher.user.last_name}}</h1>
 
       <h3>Description </h3>
-      <p>This Course is Taught by Teacher Name</p>
+      <p>This Course is Taught by {{course.teacher.user.first_name}} {{course.teacher.user.last_name}}</p>
 
       <div class="button2">
         <!-- Link to take attendance (update with actual URL) -->
-        <a href="path/to/take-attendance"><button class="calendar">Take Attendance</button></a>
+        <a href="{% url 'calendar' course.id %}"><button class="calendar">Take Attendance</button></a>
 
         <!-- Link to download report (update with actual URL) -->
         <a href="path/to/download-report"><button class="cal-report">Report</button></a>
@@ -43,5 +95,8 @@
     </div>
   </div>
   <!-- End For Loop -->
+  {% endfor %}
 </div>
 <!-- End Body -->
+
+{% endblock %}

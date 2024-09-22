@@ -7,19 +7,20 @@ from .forms import LoginForm, UserRegistrationForm, TeacherForm, StudentForm, Co
 from .models import Teacher, Student, Course, StudentClass
 
 # Create your views here.
-
-# def login(request):
+# def login_page(request):
 #     if request.method == 'POST':
 #         print(request.POST)
-#         username = request.POST .get('username')
-#         password = request.POST .get('password')
+#         username = request.POST.get('username')
+#         password = request.POST.get('password')
 #         print("*******")
-#         print(username, password)
+#         print(username,password)
 #         user = authenticate(username=username, password=password)
 #         print(user)
 #         if user is None:
 #             messages.warning(request, 'Invalid Username or Password')
 #             messages.warning(request, 'Please try again')
+#         else: 
+#             login(request, user)
 
 #     return render(request, 'auth/login.html')
 
@@ -39,11 +40,12 @@ def login_page(request):
             if user is not None:
                 print("User is authenticated")
                 login(request, user)
-
                 if user.is_superuser:
                     return redirect('admin-page-name')
                 # return redirect(next if next else 'admin-page-name')
-                print("Not Admin")
+                else: 
+                    print("Not Admin")
+                    return redirect('course-list')
             else:
                 print("User is not authenticated")
         else:
@@ -67,6 +69,7 @@ def logout_user(request):
 
 @login_required
 def register_user(request):
+    print("Register User")
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
@@ -79,11 +82,11 @@ def register_user(request):
             pswd2 = form.cleaned_data.get('password2')
 
             if User.objects.filter(username=username).exists():
-                messages.WARNING(request, 'Username already exists')
-                return redirect('register')
-            
-            User.objects.create_user(first_name=first_name, last_name=last_name, username=username, email=email, password=pswd1)
-            messages.success(request, 'User Registration Successful')
+                form.add_error('username', f'Username with {username} already exists')
+                print("Username already exists")
+            else:
+                User.objects.create_user(first_name=first_name, last_name=last_name, username=username, email=email, password=pswd1)
+                messages.success(request, 'User Registered Successfully')
         else: 
             print(form.errors)
             print(form.non_field_errors())
@@ -112,24 +115,22 @@ def teacher(request):
             secondary_number = form.cleaned_data['secondary_number']
             sex = form.cleaned_data['sex']
             my_image = form.cleaned_data['my_image']
-            print(my_image)
+
             if Teacher.objects.filter(user=user).exists():
                 print("User already exists")
                 form.add_error('teacher', f'User with {user.username} already exists')
             else:
                 try:
                     Teacher.objects.create(user=user,
-                                        address=address,
-                                        dob=dob,
-                                        primary_number=primary_number,
+                                        address=address, 
+                                        dob=dob, 
+                                        primary_number=primary_number, 
                                         secondary_number=secondary_number,
                                         sex=sex,
                                         image=my_image)
                     messages.success(request, 'Teacher Created Successfully')
-                except IntegrityError as ie:
-                    print(f"Integrity error caught: ... {ie}")    
                 except Exception as e:
-                    print(f"Error in Creating User: ... {e}")
+                    print("Error in Creating User")
         else:   
             print("Form is Invalid")
             print(form.errors)
@@ -176,7 +177,6 @@ def add_course(request):
         form  = CourseForm()
         form.fields['teacher'].choices = [(teacher.id, f'{teacher.user.first_name} {teacher.user.last_name}') for teacher in teachers]
     return render(request, 'auth/addcourse.html', {'form': form})
-
 
 @login_required
 def add_student_class(request):
